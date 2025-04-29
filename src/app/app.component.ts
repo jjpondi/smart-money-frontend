@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import{FormsModule } from '@angular/forms';
-import { HeaderComponent} from './header/header.component';
 import {ButtonModule} from 'primeng/button';
+import { HeaderComponent } from './layout/header/header.component';
+import { MenubarModule } from 'primeng/menubar';
+import { FooterComponent } from './layout/footer/footer.component';
+
 
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, FormsModule, ButtonModule],
+  imports: [FormsModule, ButtonModule, HeaderComponent, MenubarModule, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
