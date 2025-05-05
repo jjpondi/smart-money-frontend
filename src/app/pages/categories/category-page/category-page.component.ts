@@ -11,7 +11,7 @@ import {IconField} from 'primeng/iconfield';
 import {InputIcon} from 'primeng/inputicon';
 import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
-
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-category-page',
@@ -23,18 +23,18 @@ export class CategoryPageComponent implements OnInit {
   public categories: Category[]= []
   public globalFilterFields: string[] = [];
 
-  public onGlobalFilter(table: Table, event: Event): void {
-    table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
-  }
+  @Input({required: true}) type: 'EXPENSE' | 'INCOME' = 'EXPENSE';
+  
   public cols: Column [] = [];
 
    constructor(private categoryService: CategoryService) {}
-   
+   public onGlobalFilter(table: Table, event: Event): void {
+    table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
+  }
+
    ngOnInit(): void {
      this.setupCols();
-     this.categoryService.getCategories().subscribe((data: Category[]): void => {
-       this.categories = data;
-     })
+     this.getByType(this.type);
    }
    getByType(type: string){
     this.categoryService.getCategoriesByType(type).subscribe((data: Category[]): void => {

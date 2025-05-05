@@ -9,12 +9,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { TagModule } from 'primeng/tag';
+import { TabViewModule } from 'primeng/tabview';
 
 @Component({
   selector: 'app-root',
 
   imports: [FormsModule, ButtonModule, HeaderComponent, MenubarModule, FooterComponent, 
-   RouterOutlet, HomeComponent,TableModule, CommonModule, TagModule],
+   RouterOutlet, HomeComponent,TableModule, CommonModule, TagModule, TabViewModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
