@@ -9,7 +9,18 @@
     <ng-template #body let-category> 
         <tr>
             <td *ngFor= "let col of cols">
-                {{ category[col.field] }}
+                 @if(col.field==='plannedInMonth'){
+                    {{ category[col.field] | currency}}
+                 } 
+                 @else if(col.field==='createdDateTime'){
+                    {{ category[col.field] | date}}
+                 } 
+                 @else if(col.field==='type'){
+                    {{ category[col.field] || '-'}}
+                 } 
+                 @else {
+                    {{ category[col.field] || '-'}}
+                 }
             </td>    
         </tr>
     </ng-template>
