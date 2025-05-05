@@ -1,27 +1,37 @@
 <p-table [value]="categories" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template #header>
         <tr>
-            <th *ngFor= "let col of cols">
+            @for (col of cols;track col)
+            {
+                <th>
+                    {{col.header}}
+                </th>
+            }   
+           <!---- <th *ngFor= "let col of cols">
                 {{ col.header }}
-            </th>
+            </th>-->
         </tr>
     </ng-template>
     <ng-template #body let-category> 
         <tr>
-            <td *ngFor= "let col of cols">
-                 @if(col.field==='plannedInMonth'){
-                    {{ category[col.field] | currency}}
-                 } 
-                 @else if(col.field==='createdDateTime'){
-                    {{ category[col.field] | date}}
-                 } 
-                 @else if(col.field==='type'){
-                    {{ category[col.field] || '-'}}
-                 } 
-                 @else {
-                    {{ category[col.field] || '-'}}
-                 }
-            </td>    
+            @for (col of cols;track col)
+            {
+                <td>
+                    @if(col.field==='plannedInMonth'){
+                       {{ category[col.field] | currency}}
+                    } 
+                    @else if(col.field==='createdDateTime'){
+                       {{ category[col.field] | date}}
+                    } 
+                    @else if(col.field==='type'){
+                       {{ category[col.field] || '-'}}
+                    } 
+                    @else {
+                       {{ category[col.field] || '-'}}
+                    }
+               </td>    
+            }
+            
         </tr>
     </ng-template>
 </p-table>
