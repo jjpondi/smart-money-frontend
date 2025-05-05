@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import{FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import { HeaderComponent } from './layout/header/header.component';
@@ -12,6 +12,7 @@ import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-root',
+
   imports: [FormsModule, ButtonModule, HeaderComponent, MenubarModule, FooterComponent, 
    RouterOutlet, HomeComponent,TableModule, CommonModule, TagModule],
   templateUrl: './app.component.html',
