@@ -7,11 +7,12 @@ import { FooterComponent } from './layout/footer/footer.component';
 import {RouterOutlet} from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { TableModule } from 'primeng/table';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   imports: [FormsModule, ButtonModule, HeaderComponent, MenubarModule, FooterComponent, 
-   RouterOutlet, HomeComponent,TableModule],
+   RouterOutlet, HomeComponent,TableModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
