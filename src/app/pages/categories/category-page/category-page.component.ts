@@ -3,11 +3,11 @@ import { TableModule } from 'primeng/table';
 import { Category } from '../../../model/category';
 import { Column } from '../../../model/column';
 import { CommonModule } from '@angular/common'; // ca c' le module qui contient NgFor
-
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-category-page',
-  imports: [TableModule, CommonModule],
+  imports: [TableModule, CommonModule, TagModule],
   templateUrl: './category-page.component.html',
   styleUrl: './category-page.component.scss'
 })

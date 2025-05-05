@@ -23,8 +23,16 @@
                     @else if(col.field==='createdDateTime'){
                        {{ category[col.field] | date}}
                     } 
-                    @else if(col.field==='type'){
-                       {{ category[col.field] || '-'}}
+                    @else if(col.field==='type')
+                    {
+                        @if (category[col.field]==='EXPENSE')
+                        {
+                          <p-tag value="Dépense" severity="danger"></p-tag>
+                        }
+                        @else
+                        {
+                           <p-tag value="Revenu" severity="succes"></p-tag>
+                        }
                     } 
                     @else {
                        {{ category[col.field] || '-'}}
