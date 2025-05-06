@@ -14,24 +14,24 @@ import {Button} from 'primeng/button';
 import { Input } from '@angular/core';
 import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
 import { CategoryItemComponent } from '../category-item/category-item.component';
-import { NgModule } from '@angular/core';
+import {CurrencyPipe, DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-category-page',
-  imports: [TableModule, CommonModule, TagModule, IconField, InputText,InputIcon,Button],
+  imports: [DatePipe,CurrencyPipe,TableModule, CommonModule, TagModule, IconField, InputText,InputIcon,Button],
   templateUrl: './category-page.component.html',
   styleUrl: './category-page.component.scss'
 })
 export class CategoryPageComponent implements OnInit {
   public categories: Category[]= []
   public globalFilterFields: string[] = [];
-
   @Input({required: true}) type: 'EXPENSE' | 'INCOME' = 'EXPENSE';
   
   public cols: Column [] = [];
+  private ref!: DynamicDialogRef;
+    constructor(private categoryService: CategoryService, private DialogService: DialogService) {}
 
-   constructor(private categoryService: CategoryService, private DialogService: DialogService) {}
-   public onGlobalFilter(table: Table, event: Event): void {
+    public onGlobalFilter(table: Table, event: Event): void {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 
@@ -59,11 +59,18 @@ export class CategoryPageComponent implements OnInit {
        this.DialogService.open(CategoryItemComponent, {
        header: "Nouvelle categorie",
        closable:true, // ca cest pour avoir un formulaire qu'on peut fermer
-       width:'40vw',
+       width:'60vw',
        modal:true,
        data:{type:this.type}
    })
+        this.ref.onClose.subscribe((created: Category)=>{
+            if(created){
+            this.categories.unshift(created);
+             }
+         })
+
   }
+}
 
  
-}
+
