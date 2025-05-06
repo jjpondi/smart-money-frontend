@@ -10,12 +10,14 @@ import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { TagModule } from 'primeng/tag';
 import { TabViewModule } from 'primeng/tabview';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-root',
 
   imports: [FormsModule, ButtonModule, HeaderComponent, MenubarModule, FooterComponent, 
-   RouterOutlet, HomeComponent,TableModule, CommonModule, TagModule, TabViewModule],
+   RouterOutlet, HomeComponent,TableModule, CommonModule, TagModule, TabViewModule,DynamicDialogModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

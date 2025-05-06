@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { TabViewModule } from 'primeng/tabview';
+import { TabPanel, TabViewModule } from 'primeng/tabview';
 import { CategoryPageComponent } from '../category-page/category-page.component';
 
 
 
 @Component({
   selector: 'app-category-tabs',
-  imports: [TabViewModule, CategoryPageComponent],
+  imports: [TabViewModule, CategoryPageComponent, TabPanel],
   templateUrl: './category-tabs.component.html',
   styleUrl: './category-tabs.component.scss'
 })

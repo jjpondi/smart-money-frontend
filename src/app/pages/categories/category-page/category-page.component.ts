@@ -12,6 +12,9 @@ import {InputIcon} from 'primeng/inputicon';
 import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
 import { Input } from '@angular/core';
+import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
+import { CategoryItemComponent } from '../category-item/category-item.component';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-category-page',
@@ -27,7 +30,7 @@ export class CategoryPageComponent implements OnInit {
   
   public cols: Column [] = [];
 
-   constructor(private categoryService: CategoryService) {}
+   constructor(private categoryService: CategoryService, private DialogService: DialogService) {}
    public onGlobalFilter(table: Table, event: Event): void {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
@@ -50,5 +53,17 @@ export class CategoryPageComponent implements OnInit {
      ];
      this.globalFilterFields = ['name', 'plannedInMonth', 'type'];
    }
+ 
+   openAddDialog(): void
+   {
+       this.DialogService.open(CategoryItemComponent, {
+       header: "Nouvelle categorie",
+       closable:true, // ca cest pour avoir un formulaire qu'on peut fermer
+       width:'40vw',
+       modal:true,
+       data:{type:this.type}
+   })
+  }
+
  
 }

@@ -6,7 +6,7 @@
   [tableStyle]="{ 'min-width': '50rem' }"
   [paginator]="true"
   [rows]="10"
-  [rowsPerPageOptions]="[10, 20, 30, 100, 1000]"
+  [rowsPerPageOptions]="[5, 10, 20, 100, 1000]"
   [showCurrentPageReport]="true"
   currentPageReportTemplate="Affichage de {first} à {last} sur {totalRecords} entrées"
   [rowHover]="true"
@@ -14,7 +14,7 @@
     <!-- 🔍 Recherche globale -->
   <ng-template #caption>
     <div class="flex items-center justify-between">
-      <p-button icon="pi pi-plus" label="ajouter"></p-button>
+      <p-button icon="pi pi-plus" (click)="openAddDialog()" label="ajouter"></p-button>
       <p-iconfield>
         <p-inputicon styleClass="pi pi-search" />
         <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Recherche..." />
